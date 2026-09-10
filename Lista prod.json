@@ -1,0 +1,183 @@
+[
+    {
+        "id": "1",
+        "nombre": "Modelo 404",
+        "precio": "$8,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba de drenaje para áreas reducidas",
+    }
+    {
+        "id": "2",
+        "nombre": "Modelo 405",
+        "precio": "$12,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba de drenaje comercial",
+    }
+    {
+        "id": "3",
+        "nombre": "Modelo 406",
+        "precio": "$15,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba de drenaje compacta",
+    }
+    {
+        "id": "4",
+        "nombre": "LCU-20",
+        "precio": "$20,000",
+        "categoria": "De condensados",
+        "descripcion": "Bomba de condesados para sistemas de aire acondicionado",
+    }
+    {
+        "id": "4",
+        "nombre": "LCU-20 ST",
+        "precio": "$20,000",
+        "categoria": "De condensados",
+        "descripcion": "Bomba de condesados para sistemas de aire acondicionado con 20' de tubería",
+    }
+    {
+        "id": "5",
+        "nombre": "LCU-MS",
+        "precio": "$25,000",
+        "categoria": "De condensados",
+        "descripcion": "Bomba de condesados para mini splits",
+    }
+    {
+        "id": "6",
+        "nombre": "Ascent II",
+        "precio": "$30,000",
+        "categoria": "Sistema inodoro",
+        "descripcion": "Inodoro macerador de alta eficiencia",
+    }
+    {
+        "id": "7",
+        "nombre": "LowPro41LP",
+        "precio": "$30,000",
+        "categoria": "Sistema inodoro",
+        "descripcion": "Sistema de alcantarillado para sotanos",
+    }
+    {
+        "id": "8",
+        "nombre": "201 Qwik Jon Premier",
+        "precio": "$30,000",
+        "categoria": "Sistema inodoro",
+        "descripcion": "Sistema de bomba trituradora de descarga ascendente",
+    }
+    {
+        "id": "9",
+        "nombre": "Bomba de drenaje estándar 105 con M53",
+        "precio": "$30,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba de drenaje con acceso de gravedad limitado",
+    }
+    {
+        "id": "10",
+        "nombre": "Bomba de drenaje de alto flujo 131 con M98",
+        "precio": "$30,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba de drenaje con acceso de gravedad limitado y mayor flujo",
+    }
+    {
+        "id": "11",
+        "nombre": "Bomba de drenaje de flujo y altura 135 con WM152",
+        "precio": "$30,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba de drenaje automática con alto caudal",
+    }
+    {
+        "id": "12",
+        "nombre": "PRISMA 15-2/1115",
+        "precio": "$30,000",
+        "categoria": "Centrífugas",
+        "descripcion": "Bomba centrífuga de 2 etapas con 1/2 hp para agua limpia",
+    }
+    {
+        "id": "13",
+        "nombre": "PRISMA 45N-2/1220",
+        "precio": "$30,000",
+        "categoria": "Centrífugas",
+        "descripcion": "Bomba centrífuga de 2 etapas con 2 hp para agua limpia con motor de alta eficiencia",
+    }
+    {
+        "id": "14",
+        "nombre": "PRISMA 25-2/1115",
+        "precio": "$30,000",
+        "categoria": "Centrífugas",
+        "descripcion": "Bomba centrífuga de 2 etapas con 1 hp para agua limpia con motor de alta eficiencia y control de velocidad variable",
+    }
+    {
+        "id": "15",
+        "nombre": "TECNO 15-3/1115",
+        "precio": "$30,000",
+        "categoria": "Centrífugas",
+        "descripcion": "Bomba centrífuga de 3 etapas con 3/4 hp para agua limpia con motor de alta eficiencia y control de velocidad variable",
+    }
+    {
+        "id": "16",
+        "nombre": "PKUF-6UV",
+        "precio": "$30,000",
+        "categoria": "Purificadores",
+        "descripcion": "Sistema de ultrafiltración de 6 etapas",
+    }
+    {
+        "id": "17",
+        "nombre": "AP-50/1127",
+        "precio": "$30,000",
+        "categoria": "Periféricas",
+        "descripcion": "Motobomba periférica de superficie para agua limpia",
+    }
+    {
+        "id": "18",
+        "nombre": "PKm 60-MD-1",
+        "precio": "$30,000",
+        "categoria": "Periféricas",
+        "descripcion": "Electrobomba con impulsor periférico para agua limpia",
+    }
+    {
+        "id": "19",
+        "nombre": "PKSm 60-1",
+        "precio": "$30,000",
+        "categoria": "Periféricas",
+        "descripcion": "Electrobomba autocebante con impulsor periférico para agua limpia",
+    }
+    {
+        "id": "20",
+        "nombre": "CPm 600-1",
+        "precio": "$30,000",
+        "categoria": "Centrífugas",
+        "descripcion": "Electrobomba centrífuga para agua limpia",
+    }
+    {
+        "id": "21",
+        "nombre": "Top 1",
+        "precio": "$30,000",
+        "categoria": "Sumergibles",
+        "descripcion": "Electrobomba sumergible de drenaje para agua limpia",
+    }
+    {
+        "id": "22",
+        "nombre": "Sanipro Up",
+        "precio": "$30,000",
+        "categoria": "Sistema inodoro",
+        "descripcion": "Sistema de bomba trituradora compacto para inodoro, lavabo y ducha",
+    }
+    {
+        "id": "23",
+        "nombre": "Saniswift",
+        "precio": "$30,000",
+        "categoria": "De drenaje",
+        "descripcion": "Bomba compacta y versátil para evacuar aguas grises de fregaderos o tarjas",
+    }
+    {
+        "id": "24",
+        "nombre": "Scalestop",
+        "precio": "$30,000",
+        "categoria": "Purificadores",
+        "descripcion": "Material inhibidor de incrustaciones",
+    }
+
+
+
+
+
+
+]

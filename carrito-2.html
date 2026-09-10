@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compra | Kratos Tecnología en Movimiento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: { blue: '#0077B6', dark: '#0f172a', light: '#f8fafc' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+        .cart-item { transition: opacity 0.3s ease, transform 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-4 px-[5%] flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">H</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Kratos <span class="text-brand-blue">Tecnología en Movimiento</span></span>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+            <a href="index.html" class="hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="catalogo.html" class="hover:text-brand-blue transition-colors">Catálogo</a>
+            <a href="servicios.html" class="hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="tienda-en-línea-2.html" class="hover:text-brand-blue transition-colors">Tienda</a>
+            <a href="contacto.html" class="hover:text-brand-blue transition-colors">Contacto</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <a href="tienda-en-línea-2.html" class="flex items-center gap-2 text-sm text-slate-500 hover:text-brand-blue transition-colors font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                Seguir comprando
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-8 px-[5%] max-w-7xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Carrito de compra</h1>
+        <p class="text-slate-600 mb-6">Revisa tus productos antes de finalizar la compra o solicitar la cotización formal.</p>
+        <div class="flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-lg p-4">
+            <svg class="w-5 h-5 text-brand-blue mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-sm text-blue-800 leading-relaxed font-medium">Los productos no están reservados hasta completar el pago. Los tiempos de envío para proyectos especiales se confirmarán en el checkout.</p>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="max-w-7xl mx-auto px-[5%] pb-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Lista de productos -->
+        <div class="lg:col-span-8 space-y-4" id="cart-container">
+
+            <!-- Los items se renderizan aquí por JS -->
+
+            <!-- Carrito vacío (oculto por defecto) -->
+            <div id="empty-cart-msg" class="hidden text-center py-16 bg-white border border-slate-200 rounded-xl">
+                <svg class="w-16 h-16 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Tu carrito está vacío</h3>
+                <p class="text-slate-500 mb-6">Parece que aún no has agregado ningún equipo.</p>
+                <a href="tienda-en-línea-2.html" class="inline-block bg-brand-blue hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors">Explorar Tienda</a>
+            </div>
+
+        </div>
+
+        <!-- Panel Resumen -->
+        <div class="lg:col-span-4" id="summary-container">
+            <div class="sticky top-28 space-y-6">
+
+                <!-- Código de descuento -->
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
+                    <h3 class="text-sm font-bold text-slate-900 mb-3">Código de descuento</h3>
+                    <div class="flex gap-2">
+                        <input type="text" id="discount-input" placeholder="Ej: KRATOS2025"
+                               class="flex-1 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all uppercase">
+                        <button class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors">Aplicar</button>
+                    </div>
+                </div>
+
+                <!-- Resumen del pedido -->
+                <div class="bg-white border border-slate-200 shadow-sm rounded-xl p-6">
+                    <h2 class="text-xl font-bold text-slate-900 mb-6">Resumen del pedido</h2>
+                    <div class="space-y-4 text-sm text-slate-600 mb-6">
+                        <div class="flex justify-between">
+                            <span>Subtotal (<span id="total-items">0</span> productos)</span>
+                            <span class="font-medium text-slate-900" id="summary-subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Envío</span>
+                            <span class="text-slate-400 italic">Calculado en checkout</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Impuestos (IVA 16%)</span>
+                            <span class="font-medium text-slate-900" id="summary-tax">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mb-6 flex justify-between items-end">
+                        <span class="font-bold text-slate-900">Total estimado</span>
+                        <span class="text-3xl font-black text-brand-blue" id="summary-total">$0.00</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button id="btn-checkout"
+                                class="w-full bg-brand-blue hover:bg-blue-800 text-white py-3.5 rounded-lg font-bold transition-all shadow-md flex items-center justify-center gap-2">
+                            Finalizar compra segura
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
+
+                        <div class="relative flex py-3 items-center">
+                            <div class="flex-grow border-t border-slate-200"></div>
+                            <span class="flex-shrink-0 mx-4 text-slate-400 text-xs uppercase tracking-widest font-semibold">O también</span>
+                            <div class="flex-grow border-t border-slate-200"></div>
+                        </div>
+
+                        <button class="w-full bg-white border-2 border-slate-200 text-slate-700 hover:border-brand-blue hover:text-brand-blue py-3 rounded-lg font-bold transition-colors flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            Solicitar cotización técnica
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Badges de confianza -->
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="flex flex-col items-center text-center p-3 bg-white border border-slate-200 rounded-lg">
+                        <svg class="w-6 h-6 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase">Pago Seguro</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-3 bg-white border border-slate-200 rounded-lg">
+                        <svg class="w-6 h-6 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase">Envíos País</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center p-3 bg-white border border-slate-200 rounded-lg">
+                        <svg class="w-6 h-6 text-slate-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase">Soporte 24/7</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+    // ─────────────────────────────────────────
+    //  KRATOS — carrito.html  (lee localStorage)
+    // ─────────────────────────────────────────
+    const CART_KEY = 'kratosCart';
+    const fmt = n => '$' + parseFloat(n).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    function getCart() {
+        return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    }
+    function saveCart(cart) {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    /* ── Renderizar todos los items ── */
+    function renderCart() {
+        const cart      = getCart();
+        const container = document.getElementById('cart-container');
+        const emptyMsg  = document.getElementById('empty-cart-msg');
+        const summary   = document.getElementById('summary-container');
+
+        // Limpiar items anteriores (no el mensaje vacío)
+        container.querySelectorAll('.cart-item').forEach(el => el.remove());
+
+        if (cart.length === 0) {
+            emptyMsg.classList.remove('hidden');
+            summary.style.opacity        = '0.5';
+            summary.style.pointerEvents  = 'none';
+            updateTotals([]);
+            return;
+        }
+
+        emptyMsg.classList.add('hidden');
+        summary.style.opacity       = '1';
+        summary.style.pointerEvents = '';
+
+        cart.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'cart-item bg-white border border-slate-200 rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 hover:shadow-md transition-shadow relative group';
+            div.dataset.nombre = item.nombre;
+            div.innerHTML = `
+                <button onclick="removeItem(this)" title="Eliminar"
+                        class="absolute top-4 right-4 sm:static sm:order-last text-slate-400 hover:text-red-500 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+
+                <div class="w-24 h-24 sm:w-28 sm:h-28 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-center p-2 shrink-0">
+                    <img src="${item.img}" alt="${item.nombre}"
+                         class="w-full h-full object-contain mix-blend-multiply"
+                         onerror="this.style.display='none'">
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <p class="text-xs text-slate-400 font-bold tracking-widest uppercase mb-1">${item.marca || ''}</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3 truncate">${item.nombre}</h3>
+                    <p class="text-sm font-semibold text-slate-900 unit-price" data-price="${item.precio}">
+                        ${fmt(item.precio)} <span class="text-xs font-normal text-slate-500">c/u</span>
+                    </p>
+                </div>
+
+                <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-4 mt-2 sm:mt-0">
+                    <div class="flex items-center border border-slate-200 rounded-lg bg-white overflow-hidden">
+                        <button onclick="updateQty(this, -1)"
+                                class="w-8 h-8 flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-brand-blue transition-colors">−</button>
+                        <input type="number" value="${item.qty}" min="1"
+                               class="w-10 h-8 text-center text-sm font-bold text-slate-900 border-x border-slate-200 focus:outline-none qty-input"
+                               onchange="syncQtyFromInput(this)">
+                        <button onclick="updateQty(this, 1)"
+                                class="w-8 h-8 flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-brand-blue transition-colors">+</button>
+                    </div>
+                    <p class="text-lg font-black text-slate-900 item-subtotal">${fmt(item.precio * item.qty)}</p>
+                </div>`;
+            // Insertar antes del mensaje vacío
+            container.insertBefore(div, emptyMsg);
+        });
+
+        updateTotals(cart);
+    }
+
+    /* ── Actualizar resumen lateral ── */
+    function updateTotals(cart) {
+        let subtotal   = 0;
+        let totalItems = 0;
+        cart.forEach(p => {
+            subtotal   += p.precio * p.qty;
+            totalItems += p.qty;
+        });
+        const tax   = subtotal * 0.16;
+        const total = subtotal + tax;
+
+        document.getElementById('total-items').textContent      = totalItems;
+        document.getElementById('summary-subtotal').textContent = fmt(subtotal);
+        document.getElementById('summary-tax').textContent      = fmt(tax);
+        document.getElementById('summary-total').textContent    = fmt(total);
+    }
+
+    /* ── Cambiar cantidad con botones +/- ── */
+    function updateQty(btn, delta) {
+        const input  = btn.parentElement.querySelector('.qty-input');
+        const newVal = Math.max(1, parseInt(input.value) + delta);
+        input.value  = newVal;
+        persistQty(input);
+    }
+
+    /* ── Cambiar cantidad escribiendo en el input ── */
+    function syncQtyFromInput(input) {
+        const val = Math.max(1, parseInt(input.value) || 1);
+        input.value = val;
+        persistQty(input);
+    }
+
+    /* ── Guardar cantidad modificada en localStorage y refrescar totales ── */
+    function persistQty(input) {
+        const item    = input.closest('.cart-item');
+        const nombre  = item.dataset.nombre;
+        const qty     = parseInt(input.value);
+        const price   = parseFloat(item.querySelector('.unit-price').dataset.price);
+
+        item.querySelector('.item-subtotal').textContent = fmt(price * qty);
+
+        const cart    = getCart();
+        const entrada = cart.find(p => p.nombre === nombre);
+        if (entrada) { entrada.qty = qty; saveCart(cart); }
+
+        updateTotals(getCart());
+    }
+
+    /* ── Eliminar item ── */
+    function removeItem(btn) {
+        const item   = btn.closest('.cart-item');
+        const nombre = item.dataset.nombre;
+
+        item.style.opacity   = '0';
+        item.style.transform = 'scale(0.96)';
+
+        setTimeout(() => {
+            item.remove();
+            const cart = getCart().filter(p => p.nombre !== nombre);
+            saveCart(cart);
+            if (cart.length === 0) {
+                document.getElementById('empty-cart-msg').classList.remove('hidden');
+                const summary = document.getElementById('summary-container');
+                summary.style.opacity      = '0.5';
+                summary.style.pointerEvents = 'none';
+            }
+            updateTotals(getCart());
+        }, 300);
+    }
+
+    /* ── Init ── */
+    document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>

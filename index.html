@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Equipos Hidráulicos | Soluciones Industriales</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+   <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0077B6',
+                            dark: '#0f172a', /* slate-900 */
+                            light: '#f8fafc' /* slate-50 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos específicos para index */
+        .float-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .float-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
+        /* Ocultar marcador nativo del acordeón y animar icono */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary svg.arrow { transform: rotate(180deg); }
+    </style>
+
+</head>
+
+<body class="font-sans bg-white text-gray-800 antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-4 px-[5%] flex items-center justify-between transition-all">
+        <a href="#" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">H</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Kratos <span class="text-brand-blue">Tecnología en Movimiento</span></span>
+        </a>
+ <!-- Categorías -->      
+        <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+            <a href="index 2.html" class="text-brand-blue font-semibold">Inicio</a>
+            <a href="catalogo.html" class="hover:text-brand-blue transition-colors">Catálogo</a>
+            <a href="servicios.html" class="hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="tienda-en-línea-2.html" class="hover:text-brand-blue transition-colors">Tienda</a>
+            <a href="contacto.html" class="hover:text-brand-blue transition-colors">Contacto</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="relative text-slate-600 hover:text-brand-blue transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="absolute -top-1.5 -right-2 bg-brand-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+            </button>
+        </div>
+    </nav>
+ <!-- Contenido -->
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-brand-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="img Portada/Mantenimiento en cuarto de bombas.png" alt="Mantenimiento en cuarto de bombas" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-slate-900/80"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-[5%] w-full">
+            <div class="max-w-2xl">
+            <span class="text-brand-blue font-bold tracking-widest text-sm uppercase mb-3 block">Expertos en distribución</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Soluciones en equipos hidráulicos para <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-blue-400"> industria, construcción y hogar</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl font-light">
+                    Distribuimos marcas líderes con experiencia técnica comprobada. Somos proveedores de equipos hidráulicos para proyectos residenciales, comerciales e industriales.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="contacto.html" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-blue-800 text-white px-8 py-3.5 rounded-md font-semibold transition-all">
+                        Cotizar ahora
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="tienda-en-línea-2.html" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white backdrop-blur-md px-8 py-4 rounded-md font-semibold text-base transition-all flex items-center justify-center">
+                        Tienda en línea
+                    </a>
+                </div>
+            </div>
+    </header>
+
+    <section class="py-12 border-b border-gray-100 bg-white">
+        <div class="max-w-7xl mx-auto px-page text-center">
+            <p class="text-sm font-semibold text-brand-gray mb-8 uppercase tracking-widest">Distribuimos las marcas más confiables del mercado</p>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <h5 class="text-xl font-bold font-sans">Liberty Pumps</h5>
+                <h5 class="text-xl font-bold font-sans">Zoeller</h5>
+                <h5 class="text-xl font-bold font-sans">VDE</h5>
+                <h5 class="text-xl font-bold font-sans">Pedrollo</h5>
+                <h5 class="text-xl font-bold font-sans">Instapura</h5>
+                <h5 class="text-xl font-bold font-sans">WDM</h5>
+                <h5 class="text-xl font-bold font-sans">Saninflo</h5>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-y bg-brand-light">
+        <div class="max-w-5xl mx-auto px-page">
+            <div class="mb-12 md:mb-10 max-w-5xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mt-8 mb-4">Expertos en soluciones hidráulicas</h2>
+                <p class="mb-6 text-brand-gray text-lg px-page">Llevamos 15 años apoyando constructoras e instaladores hidráulicos con cotizaciones oportunas, asesoría técnica, disponibilidad de equipos y seguimiento durante el proyecto. Nuestro equipo entiende cada aplicación y garantiza que recibas exactamente lo que necesitas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden card-hover border border-gray-100">
+                    <div class="h-60 bg-gray-200 relative">
+                        <img src="img Portada/Compras online.png" class="w-full h-full object-cover" alt="Sistemas de PresiÃ³n">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-brand-blue">Garantía</div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Protección en cada compra</h3>
+                        <p class="text-brand-gray mb-6 text-sm">Todos nuestros equipos cuentan con garantía de fabricante y respaldo técnico durante toda la vida útil del producto.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden card-hover border border-gray-100">
+                    <div class="h-60 bg-gray-200 relative">
+                        <img src="img Portada/Rutas de entrega.png" class="w-full h-full object-cover" alt="Bombas Sumergibles">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-brand-blue">Enví­os</div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Cobertura en todo el país</h3>
+                        <p class="text-brand-gray mb-6 text-sm">Realizamos entregas rápidas y seguras a cualquier punto del territorio nacional con seguimiento en tiempo real.</p>
+                     </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden card-hover border border-gray-100">
+                    <div class="h-60 bg-gray-200 relative">
+                        <img src="img Portada/Análisis de soluciones.png" class="w-full h-full object-cover" alt="Soluciones Personalizadas">
+                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-brand-blue">Asesoría técnica</div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-xl font-bold text-brand-dark mb-2">Selección de soluciones</h3>
+                        <p class="text-brand-gray mb-6 text-sm">Ofrecemos análisis para encontrar el mejor modelo para tu proyecto, especificaciones, ficha técnica y curva de rendimiento.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+<!-- Producto Destacado -->
+      <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-[5%]">
+            <div class="bg-slate-50 rounded-[2rem] border border-slate-200 overflow-hidden flex flex-col md:flex-row items-center relative">
+                
+                <div class="w-full md:w-1/2 p-10 flex items-center justify-center relative">
+                    <div class="absolute w-64 h-64 bg-brand-blue rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+                    <img src="img Portada/LP_404.png" class="relative z-10 w-full max-w-sm object-contain mix-blend-multiply drop-shadow-2xl hover:scale-105 transition-transform duration-500" alt="Bomba Sumergible Titan">
+                </div>
+
+                <div class="w-full md:w-1/2 p-10 md:pr-16 md:py-16">
+                    <div class="inline-flex items-center gap-2 text-brand-blue font-bold text-sm tracking-widest uppercase mb-4">
+                        <span class="w-8 h-0.5 bg-brand-blue"></span> Equipo Destacado
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">MODELO 404- Bomba de drenaje de “perfil corto”</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        El perfil compacto de la Liberty Pumps 404 está especialmente diseñado para áreas reducidas y te brinda la libertad de instalar accesorios donde las líneas de drenaje por gravedad no están disponibles.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <p class="text-xs text-slate-500">Potencia</p>
+                            <p class="font-bold text-slate-900">1/3 HP</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <p class="text-xs text-slate-500">Voltaje</p>
+                            <p class="font-bold text-slate-900">115 V</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <p class="text-xs text-slate-500">Manejo de Sólidos</p>
+                            <p class="font-bold text-slate-900">3/8" Pulgadas</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <p class="text-xs text-slate-500">Material</p>
+                            <p class="font-bold text-slate-900">Cubierta de polipropileno</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 items-center">
+                        <button class="w-full sm:w-auto bg-brand-blue hover:bg-blue-800 text-white px-8 py-3.5 rounded-md font-semibold transition-all shadow-md">
+                            Agregar al carrito - $450.00
+                        </button>
+                        <button class="w-full sm:w-auto text-brand-blue hover:text-blue-800 font-semibold px-4 py-3 flex items-center justify-center gap-2 transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Ficha Técnica (PDF)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->  
+    <footer class="bg-[#0b1120] text-slate-400 py-16 px-[5%] border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6 text-white">
+                    <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center font-bold">K</div>
+                    <span class="font-bold text-xl tracking-tight">Kratos Tecnología en Movimiento</span>
+                </div>
+                <p class="max-w-sm mb-6 text-sm leading-relaxed">Líderes en distribución, venta y servicio técnico de equipos hidráulicos de alta eficiencia para el mercado residencial e industrial.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">In</a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">Fb</a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">Ig</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Secciones</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Catálogo</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Tienda en Línea</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Contacto</h4>
+                <ul class="space-y-3 text-sm">
+                    <li>55-7109-0998</li>
+                    <li>kratos_ingenieria@live.com.mx</li>
+                    <li class="pt-2 leading-relaxed">Vallejo, G.A.M.<br>CDMX.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 mt-12 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center text-slate-500">
+            <p>© 2026 Kratos Tecnología en Movimiento. Todos los derechos reservados.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Políticas de Envío</a>
+                <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+       
+<script src="Filtros.js"></script>
+<script src="Funciones tienda en linea.js"></script>
+<script src="carrito-localStorage.js"></script>    
+</body>
+</html>
+
+
+

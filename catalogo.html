@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Técnico | Soluciones Hidráulicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0077B6',
+                            dark: '#0f172a', /* slate-900 */
+                            light: '#f8fafc', /* slate-50 */
+                            gray: '#64748b' /* slate-500 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .float-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .float-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .hover-bg-brand-blue:hover { background-color: #005f91; }
+        
+        /* Personalización de barra de scroll para la tabla */
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="font-sans bg-white text-slate-800 antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-4 px-[5%] flex items-center justify-between transition-all">
+        <a href="#" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">H</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Kratos <span class="text-brand-blue">Tecnología en Movimiento</span></span>
+        </a>
+        
+        <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+            <a href="index.html" class="hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="catalogo.html" class="text-brand-blue font-semibold">Catálogo</a>
+            <a href="servicios.html" class="hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="tienda-en-línea-2.html" class="hover:text-brand-blue transition-colors">Tienda</a>
+            <a href="contacto.html" class="hover:text-brand-blue transition-colors">Contacto</a>
+        </div>
+
+        <div class="hidden md:block">
+             <button class="relative text-slate-600 hover:text-brand-blue transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="absolute -top-1.5 -right-2 bg-brand-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-brand-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1581092926214-78eb424fe026?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Ingeniería de Equipos Hidráulicos">
+            <div class="absolute inset-0 bg-slate-900/85"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-[5%] w-full">
+            <div class="max-w-3xl">
+                <span class="inline-flex items-center gap-2 text-brand-blue font-bold tracking-widest text-sm uppercase mb-4">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Documentación Técnica
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Catálogo técnico de equipos hidráulicos
+                </h1>
+                <p class="text-slate-300 text-lg mb-8 font-light leading-relaxed max-w-2xl">
+                    Encuentra la solución adecuada para tu aplicación industrial o residencial. Explora especificaciones, compara tecnologías y selecciona el equipo óptimo guiado por la ingeniería.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#cotizacion" class="bg-brand-blue hover-bg-brand-blue text-white px-8 py-3.5 rounded-md font-semibold transition-all text-center shadow-lg shadow-blue-500/30">
+                        Solicitar asesoría
+                    </a>
+                    <a href="/tienda" class="bg-transparent border border-white/30 text-white hover:bg-white/10 px-8 py-3.5 rounded-md font-semibold transition-all text-center flex items-center justify-center gap-2">
+                        Ir a tienda en línea
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-[5%] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">¿Cómo elegir el equipo correcto?</h2>
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    La selección de una bomba no debe basarse únicamente en la potencia del motor. Un dimensionamiento correcto asegura la eficiencia energética, prolonga la vida útil del sistema y evita fallos críticos en la operación.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Caudal (Q) y Carga Dinámica (H)</h4>
+                            <p class="text-sm text-slate-500">Definen el volumen de fluido requerido y la presión necesaria para vencer la altura y fricción de las tuberías.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-10 h-10 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Propiedades del Fluido</h4>
+                            <p class="text-sm text-slate-500">La viscosidad, temperatura, corrosividad y presencia de sólidos determinan el material constructivo y tipo de impulsor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-4 bg-slate-100 rounded-3xl transform rotate-3"></div>
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=1000&auto=format&fit=crop" alt="Ingeniero revisando planos técnicos" class="relative z-10 rounded-2xl shadow-xl w-full object-cover h-[400px]">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-[5%]">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Clasificación por Tecnología</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden float-hover flex flex-col group">
+                    <div class="h-48 bg-slate-100 p-6 flex justify-center items-center">
+                        <img src="https://images.unsplash.com/photo-1544724569-5f546fa662b5?q=80&w=400&auto=format&fit=crop" alt="Bombas Centrífugas" class="object-contain h-full mix-blend-multiply group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-brand-blue transition-colors">Bombas Centrífugas</h3>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow">Alta eficiencia para el manejo de grandes caudales de líquidos limpios o de baja viscosidad.</p>
+                        <div class="flex flex-col gap-2">
+                            <button class="w-full bg-white border border-slate-300 text-slate-700 hover:border-brand-blue hover:text-brand-blue py-2 rounded-lg text-sm font-semibold transition-all">Ver productos</button>
+                            <button class="w-full text-brand-blue font-semibold py-2 text-sm hover:underline">Solicitar cotización</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden float-hover flex flex-col group">
+                    <div class="h-48 bg-slate-100 p-6 flex justify-center items-center">
+                        <img src="https://images.unsplash.com/photo-1585713181935-d5f622cc2415?q=80&w=400&auto=format&fit=crop" alt="Desplazamiento Positivo" class="object-contain h-full mix-blend-multiply group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-brand-blue transition-colors">Desplazamiento Positivo</h3>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow">Presión constante independientemente del caudal. Ideales para fluidos viscosos (engranajes, pistones).</p>
+                        <div class="flex flex-col gap-2">
+                            <button class="w-full bg-white border border-slate-300 text-slate-700 hover:border-brand-blue hover:text-brand-blue py-2 rounded-lg text-sm font-semibold transition-all">Ver productos</button>
+                            <button class="w-full text-brand-blue font-semibold py-2 text-sm hover:underline">Solicitar cotización</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden float-hover flex flex-col group">
+                    <div class="h-48 bg-slate-100 p-6 flex justify-center items-center">
+                        <img src="https://images.unsplash.com/photo-1517502474163-99933a21855a?q=80&w=400&auto=format&fit=crop" alt="Bombas Sumergibles" class="object-contain h-full mix-blend-multiply group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-brand-blue transition-colors">Bombas Sumergibles</h3>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow">Diseño hermético para operar inmersas. Aplicaciones en pozos profundos, drenaje y aguas negras.</p>
+                        <div class="flex flex-col gap-2">
+                            <button class="w-full bg-white border border-slate-300 text-slate-700 hover:border-brand-blue hover:text-brand-blue py-2 rounded-lg text-sm font-semibold transition-all">Ver productos</button>
+                            <button class="w-full text-brand-blue font-semibold py-2 text-sm hover:underline">Solicitar cotización</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden float-hover flex flex-col group">
+                    <div class="h-48 bg-slate-100 p-6 flex justify-center items-center">
+                        <img src="https://images.unsplash.com/photo-1590959651373-a3db0f38a961?q=80&w=400&auto=format&fit=crop" alt="Sistemas de Presión" class="object-contain h-full mix-blend-multiply group-hover:scale-110 transition-transform">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2 group-hover:text-brand-blue transition-colors">Sistemas de Presión</h3>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow">Equipos hidroneumáticos, variadores de frecuencia y multi-etapas para presión constante.</p>
+                        <div class="flex flex-col gap-2">
+                            <button class="w-full bg-white border border-slate-300 text-slate-700 hover:border-brand-blue hover:text-brand-blue py-2 rounded-lg text-sm font-semibold transition-all">Ver productos</button>
+                            <button class="w-full text-brand-blue font-semibold py-2 text-sm hover:underline">Solicitar cotización</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-[5%]">
+            <div class="mb-10 text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Tabla de Comparación Técnica</h2>
+                <p class="text-slate-600">Referencia rápida para pre-seleccionar la tecnología adecuada según las condiciones operativas de su proyecto.</p>
+            </div>
+            
+            <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-slate-700 text-sm">
+                                <th class="p-5 font-bold uppercase tracking-wider">Tipo de Bomba</th>
+                                <th class="p-5 font-bold uppercase tracking-wider">Aplicación Ideal</th>
+                                <th class="p-5 font-bold uppercase tracking-wider">Ventajas Principales</th>
+                                <th class="p-5 font-bold uppercase tracking-wider">Limitaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm text-slate-600 divide-y divide-slate-100">
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td class="p-5 font-bold text-slate-900">Centrífuga Estándar</td>
+                                <td class="p-5">Agua limpia, sistemas de riego, transferencia de gran caudal.</td>
+                                <td class="p-5 flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Costo inicial bajo, fácil mantenimiento.</td>
+                                <td class="p-5">Mala eficiencia con fluidos viscosos; requiere cebado.</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td class="p-5 font-bold text-slate-900">Periférica</td>
+                                <td class="p-5">Uso doméstico, suministro a calderas, alta presión - bajo caudal.</td>
+                                <td class="p-5 flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Alcanza altas presiones con motores pequeños.</td>
+                                <td class="p-5">Muy sensible a impurezas y arenas en el agua.</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td class="p-5 font-bold text-slate-900">Sumergible (Pozo Profundo)</td>
+                                <td class="p-5">Extracción de aguas subterráneas, minería.</td>
+                                <td class="p-5 flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> No presenta problemas de cavitación ni cebado.</td>
+                                <td class="p-5">Difícil acceso para mantenimiento correctivo.</td>
+                            </tr>
+                            <tr class="hover:bg-blue-50/50 transition-colors">
+                                <td class="p-5 font-bold text-slate-900">Multietapa Vertical</td>
+                                <td class="p-5">Edificios residenciales, sistemas contra incendio, ósmosis.</td>
+                                <td class="p-5 flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Muy alta eficiencia y ocupa poco espacio en planta.</td>
+                                <td class="p-5">Costo de inversión mayor frente a equipos horizontales.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-[5%]">
+            <h2 class="text-2xl font-bold text-slate-900 mb-10">Recursos de Ingeniería</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="#" class="p-6 rounded-xl border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Fichas Técnicas (PDF)</h4>
+                        <p class="text-sm text-slate-500 mt-1">Descarga curvas de rendimiento y dimensiones.</p>
+                    </div>
+                </a>
+                <a href="#" class="p-6 rounded-xl border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Guías de Selección</h4>
+                        <p class="text-sm text-slate-500 mt-1">Metodología de cálculo para dimensionamiento.</p>
+                    </div>
+                </a>
+                <a href="#" class="p-6 rounded-xl border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group flex items-start gap-4">
+                    <div class="w-12 h-12 bg-blue-50 text-brand-blue rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 group-hover:text-brand-blue transition-colors">Blog de Ingeniería</h4>
+                        <p class="text-sm text-slate-500 mt-1">Artículos sobre mejores prácticas e instalación.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-dark text-white text-center">
+        <div class="max-w-4xl mx-auto px-[5%]">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">¿No estás seguro qué equipo necesitas?</h2>
+            <p class="text-slate-400 text-lg mb-10">No arriesgues tu inversión. Recibe asesoría técnica personalizada por parte de nuestro equipo de ingenieros especializados.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contacto.html" class="bg-brand-blue hover:bg-brand-blue text-white px-10 py-4 rounded-lg font-bold text-lg transition-all shadow-lg shadow-blue-500/30">
+                   Solicitar cotización
+                </a>
+                <a href="tienda-en-línea-2.html" class="bg-transparent border border-slate-600 text-white hover:bg-white/5 px-10 py-4 rounded-lg font-bold text-lg transition-all">
+                    Ir a tienda en línea
+                </a>
+            </div>
+        </div>
+    </section>
+
+       <footer class="bg-[#0b1120] text-slate-400 py-16 px-[5%] border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6 text-white">
+                    <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center font-bold">H</div>
+                    <span class="font-bold text-xl tracking-tight">Kratos Tecnología en Movimiento</span>
+                </div>
+                <p class="max-w-sm mb-6 text-sm leading-relaxed">Líderes en distribución, venta y servicio técnico de equipos hidráulicos de alta eficiencia para el mercado residencial e industrial.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">In</a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">Fb</a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">Ig</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Secciones</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Catálogo</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Tienda en Línea</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Contacto</h4>
+                <ul class="space-y-3 text-sm">
+                    <li>55-7109-0998</li>
+                    <li>kratos_ingenieria@live.com.mx</li>
+                    <li class="pt-2 leading-relaxed">Vallejo, G.A.M.<br>CDMX.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 mt-12 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center text-slate-500">
+            <p>© 2026 Kratos Tecnología en Movimiento. Todos los derechos reservados.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Políticas de Envío</a>
+                <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

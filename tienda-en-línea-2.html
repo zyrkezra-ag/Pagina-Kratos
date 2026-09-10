@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda en Línea | Kratos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0077B6',
+                            dark: '#0f172a', /* slate-900 */
+                            light: '#f8fafc' /* slate-50 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos específicos para la tienda */
+        .float-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .float-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
+        /* Ocultar marcador nativo del acordeón y animar icono */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary svg.arrow { transform: rotate(180deg); }
+        /* Soporte para las clases activas del JavaScript */
+        #overlay.active, #modal-pedido.active {
+    display: flex !important;
+}
+    </style>
+</head>
+
+<body class="font-sans bg-white text-gray-800 antialiased">
+ <!-- Encabezado -->   
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-4 px-[5%] flex items-center justify-between transition-all">
+        <a href="#" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">H</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Kratos <span class="text-brand-blue">Tecnología en Movimiento</span></span>
+        </a>
+
+ <!-- Categorías -->      
+        <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+            <a href="index.html" class="hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="catalogo.html" class="hover:text-brand-blue transition-colors">Catálogo</a>
+            <a href="servicios.html" class="hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="tienda-en-línea-2.html" class="text-brand-blue font-semibold">Tienda</a>
+            <a href="contacto.html" class="hover:text-brand-blue transition-colors">Contacto</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <button id="cart-btn" class="relative text-slate-600 hover:text-brand-blue transition-colors" onclick="document.getElementById('cart-sidebar').classList.toggle('translate-x-full')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="cart-badge absolute -top-1.5 -right-2 bg-brand-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </nav>
+ <!-- Contenido -->  
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-brand-dark">
+        <div class="absolute inset-0 z-0">
+            <img src="Img tien lin/Cuarto de bombas.png" alt="Equipos Hidráulicos en Operación" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-slate-900/80"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-[5%] w-full">
+            <div class="max-w-2xl">
+                <span class="text-brand-blue font-bold tracking-widest text-sm uppercase mb-3 block">Catálogo Oficial</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Compra equipos hidráulicos estándar en línea
+                </h1>
+                <p class="text-slate-300 text-lg mb-8 font-light leading-relaxed">
+                    Soluciones de bombeo para contrucción, industria y hogar con envío asegurado a todo el país. Compra directa o cotiza proyectos especiales.
+                </p>
+                <a href="#catalogo" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-blue-800 text-white px-8 py-3.5 rounded-md font-semibold transition-all">
+                    Comprar ahora
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="catalogo" class="py-16 md:py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-[5%] flex flex-col lg:flex-row gap-10">
+            
+            <aside class="w-full lg:w-64 shrink-0">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 sticky top-28">
+                    <h3 class="font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                        Filtros
+                    </h3>
+
+ <!-- Pestaña izquierda, Tipos de producto -->  
+                    <div class="mb-6">
+                        <h4 class="text-sm font-semibold text-slate-900 mb-3">Tipo de producto</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="Periféricas"> Periféricas</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="Centrífugas"> Centrífugas</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="Sumergibles"> Sumergibles</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="Sistemas Inodoro"> Sistemas Inodoro</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="De condensados"> De condensados</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="De drenaje"> De drenaje</label>                            
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="tipo" value="Purificadores"> Purificadores</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-sm font-semibold text-slate-900 mb-3">Potencia (HP)</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" name="hp" class="text-brand-blue focus:ring-brand-blue" data-filter="HP" value="1/9 - 1/3 HP"> 1/9 - 1/3 HP</label> 
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" name="hp" class="text-brand-blue focus:ring-brand-blue" data-filter="HP" value="4/10 - 1/2 HP"> 4/10 - 1/2 HP</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" name="hp" class="text-brand-blue focus:ring-brand-blue" data-filter="HP" value="+ 3/4 HP"> + 3/4 HP</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-sm font-semibold text-slate-900 mb-3">Voltaje</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="volt" value="110V Monofásico"> 110V Monofásico</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="volt" value="220V Bifásico"> 220V Bifásico</label>
+                            <label class="flex items-center gap-2 text-sm text-slate-600 hover:text-brand-blue cursor-pointer"><input type="checkbox" class="rounded border-slate-300 text-brand-blue focus:ring-brand-blue" data-filter="volt" value="440V Trifásico"> 440V Trifásico</label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="flex-1">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                    <p class="text-sm text-slate-600">Mostrando <span class="font-bold text-slate-900">25 productos</span></p>
+                    <select class="text-sm border-slate-200 rounded-md py-2 px-3 focus:ring-brand-blue focus:border-brand-blue text-slate-700 bg-white shadow-sm cursor-pointer">
+                        <option>Ordenar por: Destacados</option>
+                        <option>Precio: Menor a Mayor</option>
+                        <option>Precio: Mayor a Menor</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    
+<!-- Liberty Pumps Modelo  404 -->   
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Drenaje"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V Monofásico">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <!-- Imagen -->  
+<img src="img tien lin/LP_404.png" alt="404 LP" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+</div>
+     <!-- Contenido -->      
+<div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->  
+<p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- Modelo 404.html" class="text-slate-900 hover:text-brand-blue">Modelo 404</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600"> Bomba de drenaje "perfil corto" para tarja con manejo de sólidos de 3/8"</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/3 HP</li>
+          <li>115 V </li>
+          <li>Altura: 11 1/8"</li>
+        </span></ul>
+        </div>
+        <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+   <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+
+<!-- Liberty Pumps Modelo  405 -->                    
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Drenaje"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <!-- Imagen -->                            
+<img src="img tien lin/Liberty_405_Low_Res.png" alt="LP_405" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300">
+</div>
+ <!-- Contenido -->     
+<div class="p-5 flex flex-col flex-1">
+    <!-- Marca -->  
+    <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+    <!-- Nombre --> 
+    <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="tarjeta de productos/LibertyPumps- Modelo 405.html" class="text-slate-900 hover:text-brand-blue">Modelo 405</a></h3>
+     <!-- Tipo / uso -->
+    <div class="space-y-1 mb-4">
+    <p class="text-xs text-slate-600">Bomba de drenaje comercial con manejo de solidos de 3/8" con altura elevada y temperatura alta</p>
+     <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>115 V </li>
+          <li>Altura: 14 1/8"</li>
+        </span></ul>
+        </div>
+    <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+
+<!-- Liberty Pumps Modelo  406 -->                    
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Drenaje"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Imagen -->
+<img src="img tien lin/Liberty_406_right_front_Low_Res.png" alt="406 LP" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+</div>
+ <!-- Contenido --> 
+    <div class="p-5 flex flex-col flex-1">
+    <!-- Marca -->    
+    <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+    <!-- Nombre -->
+    <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- Modelo 406.html" class="text-slate-900 hover:text-brand-blue">Modelo 406</a></h3>
+    <!-- Tipo / uso -->
+    <div class="space-y-1 mb-4">
+    <p class="text-xs text-slate-600">Bomba de drenaje compacta con manejos sólidos de 1/8"</p>
+    <!-- Specs -->
+    <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/6 HP</li>
+          <li>115 V </li>
+          <li>Altura: 14.1"</li>
+        </span></ul>
+        </div>
+     <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+<!-- Liberty Pumps LCU-20 -->            
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Condensados"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V Monofásico">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Imagen -->
+    <img src="img tien lin/Liberty_LCU-20S_Low_Res.png" alt="LCU-20" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+     </div>
+<!-- Contenido --> 
+     <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->   
+        <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- LCU 20.html" class="text-slate-900 hover:text-brand-blue">LCU-20</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600"> Bomba de condensados con salida de 3/8"</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/9 HP</li>
+          <li>115 V </li>
+          <li>Altura: 5.5"</li>
+          <li>Peso: 5 lbs </li>
+        </span></ul>
+        </div>
+        <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+
+<!-- Liberty Pumps LCU-20 ST -->  
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Condensados"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V Monofásico">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Imagen -->
+<img src="img tien lin/Liberty_LCU-20ST_Low_Res.png" alt="LCU-20 ST" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->
+<div class="p-5 flex flex-col flex-1">
+    <!-- Marca -->
+    <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+    <!-- Nombre -->
+    <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- LCU 20ST.html" class="text-slate-900 hover:text-brand-blue">LCU-20 ST</a></h3>
+    <!-- Tipo / uso -->
+    <div class="space-y-1 mb-4">
+    <p class="text-xs text-slate-600"> Bomba de condensados con salida de 3/8"</p>
+    <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/9 HP</li>
+          <li>115 V </li>
+          <li>Altura: 5.5"</li>
+          <li>Peso: 6 lbs </li>
+        </span></ul>
+        </div>
+    <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+<!-- Liberty Pumps LCU-MS -->   
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Condensados">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Imagen -->
+<img src="img tien lin/Liberty_LCU-MS_Low_Res.png" alt="LCU-MS" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+</div>
+<!-- Contenido --> 
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca --> 
+        <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- LCU-MS.html" class="text-slate-900 hover:text-brand-blue">LCU-MS</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba de condensado para mini-split</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>Protección térmica: 100°C</li>
+          <li>Peso: 0.4 kg </li>
+          <li>Altura: 150 mm</li>
+        </span></ul>
+        </div>
+    <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+
+<!-- Liberty Pumps Ascent(II)-->                     
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Sistemas Inodoro"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Imagen -->
+    <img src= "img tien lin/Liberty_ASCENT_II_ESW_Low_Res.png" alt="Ascenti II" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+    </div>
+<!-- Contenido --> 
+<div class="p-5 flex flex-col flex-1">
+    <!-- Marca --> 
+    <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+    <!-- Nombre -->
+    <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- AscentII.html" class="text-slate-900 hover:text-brand-blue">Ascent II</a></h3>
+    <!-- Tipo / uso -->
+    <div class="space-y-1 mb-4">
+    <p class="text-xs text-slate-600"> Sistema de inodoro macerador</p>
+    <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>115 V </li>
+          <li>Cuchillas de acero inoxidable</li>
+        </span></ul>
+        </div>
+    <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+<!-- Liberty Pumps LowPro41LP -->   
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Sistemas Inodoro"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Imagen -->
+<img src="img tien lin/Liberty_LowPro-Series_Low_Res.png" alt="LowPRO" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->
+<div class="p-5 flex flex-col flex-1">
+    <!-- Marca -->
+    <p class="text-xs text-slate-400 mb-1">Liberty Pumps</p>
+    <!-- Nombre -->
+    <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/LibertyPumps- LowPro.html" class="text-slate-900 hover:text-brand-blue">LowPro41LP</a></h3>
+    <div class="space-y-1 mb-4">
+    <!-- Tipo / uso -->
+    <p class="text-xs text-slate-600"> Sistema de alcantarillado de perfil bajo</p>
+    <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>4/10 HP</li>
+          <li>115 V</li>
+          <li>Válvula de retención de 2"</li>
+        </span></ul>
+        </div>
+    <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                
+<!-- Zoeller 201-0006 "Quik Jon" --> 
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Sistemas Inodoro"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+<!-- Imagen -->
+<div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+<img src="img tien lin/Zoeller%20QwikJon.jpg" alt="QwJon" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+</div>
+ <!-- Contenido -->
+ <div class="p-5 flex flex-col flex-1">
+      <!-- Marca -->
+      <p class="text-xs text-slate-400 mb-1">Zoeller</p>
+      <!-- Nombre -->
+      <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Zoeller Qwik Jon.html" class="text-slate-900 hover:text-brand-blue">201 Qwik Jon Premier</a></h3>
+      <!-- Tipo / uso -->
+      <div class="space-y-1 mb-4">
+      <p class="text-xs text-slate-600"> Sistema de bomba trituradora preensamblado de descarga ascendente para instalaciones de baños completos</p>
+      <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>115 V</li>
+          <li>Descarga: 1"</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+
+<!-- Zoeller 105 -->                     
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De drenaje"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V Monofásico">
+<span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+     <!-- Imagen -->
+     <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+    <img src="img tien lin/105-0001.jpg" alt="105 Zoeller" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+    </div>
+    <!-- Contenido -->     
+    <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->
+        <p class="text-xs text-slate-400 mb-1">Zoeller</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Zoeller Bomba 105.html" class="text-slate-900 hover:text-brand-blue">Bomba de drenaje estándar 105 con M53</a></h3>
+        <div class="space-y-1 mb-4">
+        <!-- Tipo / uso -->
+        <p class="text-xs text-slate-600">Bomba de drenaje automática para aplicaciones donde no se tiene acceso al drenaje por gravedad</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>3/10 HP</li>
+          <li>115 V </li>
+          <li>Altura: 15 1/14"</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+<!-- Zoeller 131-0001 -->  
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Drenaje"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen --> 
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+  <img src="img tien lin/131-0001.jpg" alt="131 Zoeller" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+  </div>
+<!-- Contenido -->       
+  <div class="p-5 flex flex-col flex-1">
+      <!-- Marca -->  
+      <p class="text-xs text-slate-400 mb-1">Zoeller</p>
+      <!-- Nombre -->
+      <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Zoeller Bomba 131.html" class="text-slate-900 hover:text-brand-blue">Bomba de drenaje de alto flujo 131 con M98</a></h3>
+      <!-- Tipo / uso -->
+      <div class="space-y-1 mb-4">
+      <p class="text-xs text-slate-600">Bomba de drenaje automática para uso en aplicaciones de drenaje de fregadero donde no se tiene acceso a drenaje por gravedad y se necesita mayor altura y mayor flujo.</p>
+      <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>115 V</li>
+          <li>Altura: 15 1/4"</li>
+        </span></ul>
+        </div>
+      <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+      <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+ <!-- Zoeller 135-0005 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Drenaje"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Zoeller%20135.png" alt="Modelo 135 Zoeller" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Zoeller</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Zoeller Bomba 135.html" class="text-slate-900 hover:text-brand-blue">Bomba de drenaje de flujo y altura 135 con WM152</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba de drenaje automática de alto caudal y cabezal alto para uso en aplicaciones de drenaje de fregadero</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>4/10 HP</li>
+          <li>115 V</li>
+          <li>Altura: 15 1/4"</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div> 
+                    
+<!-- VDE PRISMA 15-2/1115 1/2 hp  -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Centrífugas"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/prisma15.jpg" alt="1/2hp VDE" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">VDE</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/VDE Prisma15-2.html" class="text-slate-900 hover:text-brand-blue">PRISMA 15-2/1115</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba centrífuga de 2 etapas horizontales para aplicaciones de bombeo de agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>115 V</li>
+          <li>Altura: 162 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+ <!-- VDE 45N-2/1220 2 hp -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Centrífugas"
+     data-hp="+ 3/4 HP"
+     data-volt="220V Bifásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+  <!-- Imagen -->
+  <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+  <img src="img tien lin/prisma15.jpg" alt="2hp VDE" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+  </div>
+  <!-- Contenido -->                           
+  <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">VDE</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/VDE Prisma45N-2.html" class="text-slate-900 hover:text-brand-blue">PRISMA 45N-2/1220</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba centrífuga de 2 etapas  horizontales para aplicaciones de bombeo de agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+         <li> 2 HP </li>
+         <li>220V (monofásico) </li>         
+        <li>Altura: 215.3 mm </li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+<!-- VDE 25-2/1115 1 hp -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Centrífugas"
+     data-hp="+ 3/4 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/prisma15.jpg" alt="1hp VDE" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">VDE</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/VDE Prisma25-2.html" class="text-slate-900 hover:text-brand-blue">PRISMA 25-2/1115</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba centrífuga de 2 etapas  horizontales para aplicaciones de bombeo de agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1 HP</li>
+          <li>115 V (monofásico)</li>
+          <li>Altura: 184.5 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>                    
+      
+ <!-- VDE TECNO15-3/1115 3/4 hp -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Centrífugas"
+     data-hp="+ 3/4 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Bomba Tecno15-3.png" alt="3/4hp VDE" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">VDE</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/VDE Tecno 15 3.html" class="text-slate-900 hover:text-brand-blue">TECNO 15-3/1115</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba centrífuga de 3 etapas  horizontales para aplicaciones de bombeo de agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>3/4 HP</li>
+          <li>115 V</li>
+          <li>Altura: 162 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+
+<!-- VDE PKUF-6UV -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Purificadores">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/pkuf-6uv.jpg" alt="PKUF-6UV VDE" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">VDE</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/VDE PKUF-6UV.html" class="text-slate-900 hover:text-brand-blue">PKUF-6UV</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Sistema de ultrafiltración de 6 etapas</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>6 W de luz UV</li>
+          <li>115 V de luz UV</li>
+          <li>Dimesiones: 53 x 40 x 15 cm </li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>                    
+   
+<!-- VDE AP-50/1127 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Periféricas"
+     data-hp="4/10-1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/ap-50.jpg" alt=" AP-50/1127 VDE" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">VDE</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/VDE AP50.html" class="text-slate-900 hover:text-brand-blue">AP-50/1127</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Motobomba periférica de superficie para agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>127 V (monofásico) </li>
+          <li>Altura: 150 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+      
+<!-- Pedrollo PKm 60-MD-1 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Periféricas"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Pedrollo%20PK.jpg" alt="PK Pedrollo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Pedrollo</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Pedrollo PKm 60-MD-1.html" class="text-slate-900 hover:text-brand-blue">PKm 60-MD-1</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Electrobomba con impulsor periférico para agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>Monofásica</li>
+          <li>Altura: 145 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div> 
+                    
+<!-- Pedrollo PQm 90 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Periféricas"
+     data-hp="+ 3/4 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Pedrollo-PQ.jpg" alt="PQ Pedrollo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Pedrollo</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Pedrollo PQm-90.html" class="text-slate-900 hover:text-brand-blue">PQm 90</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Electrobomba con impulsor periférico para agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1 HP</li>
+          <li>Monofásica</li>
+          <li>Altura: 181 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div> 
+                    
+<!-- Pedrollo PKSm 60-1 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Periféricas"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Pedrollo-PKS.jpg" alt="PKSm Pedrollo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Pedrollo</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Pedrollo PKsm.html" class="text-slate-900 hover:text-brand-blue">PKSm 60-1</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Electrobomba autocebante con impulsor periférico para agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>Monofásica</li>
+          <li>Altura: 183 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>  
+                    
+<!-- Pedrollo CPm 600-1 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Centrífugas"
+     data-hp="4/10 - 1/2 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/CP%20hasta%203%20HP.jpg" alt="CPm 600-1 Pedrollo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Pedrollo</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Pedrollo CPm 600-1.html" class="text-slate-900 hover:text-brand-blue">CPm 600-1</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Electrobomba centrífuga para agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>Monofásica</li>
+          <li>Altura: 205 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>
+                    
+<!-- Pedrollo Top 1 -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Sumergibles"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="220V Bifásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/PedrolloTop.png" alt="Top 1 Pedrollo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Pedrollo</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Pedrollo Top 1.html" class="text-slate-900 hover:text-brand-blue">Top 1</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Electrobomba sumergible de drenaje para agua limpia</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>0.33 HP</li>
+          <li>Monofásica</li>
+          <li>Altura: 260 mm</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>                     
+                     
+<!-- Saninflo Sanipro Up -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="De Drenaje"
+     data-hp="+ 3/4 HP"
+     data-volt="220V Bifásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Saninpro.png" alt="Saninpro Saninflo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">SFA Saninflo</a></p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/SFA- SaniPro up.html" class="text-slate-900 hover:text-brand-blue">Sanipro Up</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Sistema de bomba trituradora compacto diseñado para evacuar las aguas residuales de un baño completo</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>1/2 HP</li>
+          <li>120 V</li>
+          <li>Peso: 7 kg</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div>          
+                    
+<!-- Saninflo Saniswift -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Sistema Inodoro"
+     data-hp="1/9 - 1/3 HP"
+     data-volt="110V Monofásico">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Saniswift.png" alt="Saniswift Saninflo" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">SFA Saninflo</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/SFA- Saniswift.html" class="text-slate-900 hover:text-brand-blue">Saniswift</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Bomba compacta y versátil para evacuar aguas grises de fregaderos o tarjas</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>0.3 HP</li>
+          <li>120 V</li>
+          <li>Peso: 6 kg</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div> 
+             
+<!-- Instapura Scalestop -->                   
+ <div class="bg-white border border-slate-200 rounded-xl overflow-hidden float-hover flex flex-col relative group"
+     data-tipo="Purificadores">
+ <span class="absolute top-3 left-3 z-10 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded">STOCK</span>
+ <!-- Imagen -->
+ <div class="h-56 bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
+ <img src="img tien lin/Instapura-SACLE-ST.png" alt="Instapura Scalestop" class="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"/>
+ </div>
+ <!-- Contenido -->                           
+ <div class="p-5 flex flex-col flex-1">
+        <!-- Marca -->                  
+        <p class="text-xs text-slate-400 mb-1">Instapura</p>
+        <!-- Nombre -->
+        <h3 class="font-bold text-slate-900 mb-2 leading-tight"><a href="Tarjeta de productos/Instapura Scalestop.html" class="text-slate-900 hover:text-brand-blue">Scalestop</a></h3>
+        <!-- Tipo / uso -->
+        <div class="space-y-1 mb-4">
+        <p class="text-xs text-slate-600">Material inhibidor de Incrustación</p>
+        <!-- Specs -->
+        <ul class="text-xs text-slate-600"><span class="font-semibold">
+          <li>Uso Residencial Comercial-industrial</li>
+          <li>Saco: litro</li>
+          <li>Medios filtrantes: Medios oxidantes</li>
+        </span></ul>
+        </div>
+         <!-- Precio -->
+         <div class="mt-auto">
+             <p class="text-2xl font-bold text-slate-900 mb-4">$3,500.00 <span class="text-sm text-slate-400 font-normal line-through ml-1"></span></p>
+        <!-- Acciones -->
+          <button class="w-full bg-brand-dark hover:bg-brand-blue text-white py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+           Agregar al carrito
+          </button>
+          </div>
+</div>
+</div> 
+                         
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-[5%]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-blue shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Múltiples métodos de pago</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">Aceptamos tarjetas de crédito, débito y transferencias bancarias directas (SPEI/Wire).</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-blue shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Opciones de financiamiento</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">Ofrecemos hasta 12 meses sin intereses en equipos seleccionados y crédito empresarial.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-6 bg-slate-50 rounded-xl border border-slate-100">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-blue shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-1">Envíos a todo el país</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">Cobertura nacional con envíos asegurados. Despacho en 24h para equipos en stock.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Preguntas Frecuentes -->
+    <section class="py-20 bg-brand-light">
+        <div class="max-w-3xl mx-auto px-[5%]">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Preguntas Frecuentes</h2>
+                <p class="text-slate-600">Todo lo que necesitas saber antes de realizar tu compra.</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="group bg-white rounded-lg border border-slate-200 shadow-sm" open>
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-900 hover:text-brand-blue transition-colors">
+                        ¿Cuánto tarda el envío de mi compra?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 p-5 pt-0 text-sm leading-relaxed border-t border-slate-50 mt-2">
+                        Para productos de venta directa en stock, procesamos el pedido en 24 horas y el envío suele tardar entre 2 a 5 días hábiles dependiendo de tu ubicación. Los equipos bajo cotización tienen tiempos de entrega específicos que se indican en la propuesta comercial.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-lg border border-slate-200 shadow-sm">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-900 hover:text-brand-blue transition-colors">
+                        ¿Puedo solicitar factura para mi empresa?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 p-5 pt-0 text-sm leading-relaxed border-t border-slate-50 mt-2">
+                        Sí, absolutamente. Durante el proceso de pago (Checkout) podrás ingresar tus datos fiscales y la factura electrónica será enviada a tu correo de manera automática una vez procesado el pago.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-lg border border-slate-200 shadow-sm">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-900 hover:text-brand-blue transition-colors">
+                        ¿Ofrecen garantía en los equipos?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 p-5 pt-0 text-sm leading-relaxed border-t border-slate-50 mt-2">
+                        Todos nuestros equipos cuentan con garantía directa de fábrica, que generalmente cubre desde 1 hasta 3 años por defectos de manufactura. Además, contamos con nuestro propio taller de servicio técnico para garantías y mantenimiento.
+                    </p>
+                </details>
+
+                <details class="group bg-white rounded-lg border border-slate-200 shadow-sm">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-slate-900 hover:text-brand-blue transition-colors">
+                        ¿Puedo recibir asesoría técnica antes de comprar?
+                        <span class="transition group-open:rotate-180">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 p-5 pt-0 text-sm leading-relaxed border-t border-slate-50 mt-2">
+                        ¡Por supuesto! Si tienes dudas sobre qué equipo es el adecuado para tu sistema, te recomendamos ir a la sección "Contacto" o usar nuestro botón de cotización para que un ingeniero hidráulico te asesore sin costo.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+<!-- Cotización Personalizada -->
+    <section class="py-20 px-[5%] bg-white">
+        <div class="max-w-5xl mx-auto bg-brand-dark rounded-[2rem] p-12 text-center text-white relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/20 to-transparent"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Tienes un proyecto especial?</h2>
+                <p class="text-slate-300 mb-10 max-w-2xl mx-auto text-lg font-light">
+                    Sistemas contra incendio, tableros de automatización o bombas para procesos industriales. Solicita una cotización personalizada.
+                </p>
+                <a href="/contacto" class="inline-block bg-brand-blue hover:bg-blue-600 text-white px-10 py-4 rounded-md font-bold text-lg transition-all shadow-lg shadow-blue-500/30">
+                    Solicitar cotización
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pie de página -->  
+    <footer class="bg-[#0b1120] text-slate-400 py-16 px-[5%] border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center gap-2 mb-6 text-white">
+                    <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center font-bold">K</div>
+                    <span class="font-bold text-xl tracking-tight">Kratos Tecnología en Movimiento</span>
+                </div>
+                <p class="max-w-sm mb-6 text-sm leading-relaxed">Líderes en distribución, venta y servicio técnico de equipos hidráulicos de alta eficiencia para el mercado residencial e industrial.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">In</a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">Fb</a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-brand-blue transition-colors">Ig</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Secciones</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Catálogo</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Tienda en Línea</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Contacto</h4>
+                <ul class="space-y-3 text-sm">
+                    <li>55-7109-0998</li>
+                    <li>kratos_ingenieria@live.com.mx</li>
+                    <li class="pt-2 leading-relaxed">Vallejo, G.A.M.<br>CDMX.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 mt-12 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center text-slate-500">
+            <p>© 2026 Kratos Tecnología en Movimiento. Todos los derechos reservados.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Políticas de Envío</a>
+                <a href="#" class="hover:text-white transition-colors">Términos y Condiciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--Cart sidebar -->  
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
+    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-brand-light">
+        <h2 class="cart-list_h2 font-bold text-lg text-slate-900">Carrito de compras (0)</h2>
+        <button onclick="document.getElementById('cart-sidebar').classList.add('translate-x-full')" class="text-slate-400 hover:text-brand-blue transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="cart-list_items flex-1 overflow-y-auto p-6 space-y-4">
+        </div>
+</div>
+
+    <!-- ✅ AGREGAR ESTO: -->
+    <div class="p-6 border-t border-slate-100 bg-white shrink-0">
+        <div class="flex justify-between text-sm text-slate-600 mb-1">
+            <span class="font-medium">Subtotal</span>
+            <span class="font-bold text-slate-900" id="sidebar-subtotal-display">$0.00</span>
+        </div>
+        <p class="text-xs text-slate-400 mb-4">Impuestos y envío calculados en checkout.</p>
+        <button onclick="window.open('carrito.html', '_blank')"
+                class="w-full bg-brand-blue hover:bg-blue-800 text-white py-3 rounded-lg font-bold text-sm transition-colors flex items-center justify-center gap-2 shadow-md shadow-blue-500/20">
+            Ver carrito y pagar
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+        </button>
+    </div>
+
+<div id="overlay" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[110] hidden transition-opacity"></div>
+
+<div id="modal-pedido" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl z-[120] w-[90%] max-w-2xl hidden overflow-hidden">
+    <div class="p-6 border-b border-slate-100 bg-brand-light flex justify-between items-center">
+        <h3 class="font-bold text-xl text-slate-900">Resumen de tu Pedido</h3>
+        <button id="close-modal" class="text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="pedido-detalle p-6 max-h-[60vh] overflow-y-auto space-y-4">
+        </div>
+    
+    <div class="p-6 border-t border-slate-100 bg-slate-50 flex gap-4">
+        <button onclick="document.getElementById('close-modal').click()" class="flex-1 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 py-3 rounded-lg font-bold transition-colors">Seguir Comprando</button>
+        <button class="flex-1 bg-brand-blue hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition-colors shadow-lg shadow-blue-500/30">Procesar Pago</button>
+    </div>
+</div>
+
+<script src="Filtros.js"></script>
+<script src="Funciones tienda en linea.js"></script>
+<script src="carrito-localStorage.js"></script>
+
+</body>
+</html>
