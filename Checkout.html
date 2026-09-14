@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Kratos Tecnología en Movimiento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0077B6',
+                            dark: '#0f172a',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados */
+        .float-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .float-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        input:focus, select:focus { outline: none; }
+        input:invalid, select:invalid { border-color: #ef4444; } /* Tailwind red-500 */
+    </style>
+</head>
+
+<body class="font-sans bg-brand-light text-gray-800 antialiased">
+    <!-- Encabezado -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-4 px-[5%] flex items-center justify-between transition-all">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">H</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Kratos <span class="text-brand-blue">Tecnología en Movimiento</span></span>
+        </a>
+        <div class="flex items-center gap-6">
+            <a href="tienda-en-línea-2.html" class="text-slate-600 hover:text-brand-blue transition-colors text-sm font-medium">Seguir comprando</a>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="pt-24 pb-16 min-h-screen">
+        <div class="max-w-5xl mx-auto px-[5%]">
+
+            <!-- Pasos del proceso -->
+            <div class="flex justify-center mb-10">
+                <div class="flex items-center gap-8 text-sm">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold">1</div>
+                        <span class="font-semibold text-slate-700">Carrito</span>
+                    </div>
+                    <div class="w-20 h-0.5 bg-brand-blue"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-brand-blue text-white flex items-center justify-center font-bold">2</div>
+                        <span class="font-semibold text-slate-700">Envío</span>
+                    </div>
+                    <div class="w-20 h-0.5 bg-slate-200"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center font-bold">3</div>
+                        <span class="text-slate-400">Pago</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Título -->
+            <h1 class="text-3xl font-bold text-slate-900 mb-8 text-center">Finalizar compra</h1>
+
+            <!-- Contenedor de checkout (formulario + resumen) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Formulario de envío (2 columnas) -->
+                <div class="lg:col-span-2 space-y-6">
+
+                    <!-- Sección: Información de contacto -->
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h2 class="text-xl font-bold text-slate-900 mb-6">Información de contacto</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="nombre" class="block text-sm font-medium text-slate-700 mb-1">Nombre completo *</label>
+                                <input type="text" id="nombre" name="nombre" required
+                                       class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                       placeholder="Juan Pérez López">
+                            </div>
+                            <div>
+                                <label for="telefono" class="block text-sm font-medium text-slate-700 mb-1">Teléfono *</label>
+                                <input type="tel" id="telefono" name="telefono" required
+                                       class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                       placeholder="55 1234 5678" pattern="[0-9\s\-]+">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                   placeholder="juan@example.com">
+                        </div>
+                    </div>
+
+                    <!-- Sección: Dirección de envío -->
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h2 class="text-xl font-bold text-slate-900 mb-6">Dirección de envío</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="calle" class="block text-sm font-medium text-slate-700 mb-1">Calle y número *</label>
+                                <input type="text" id="calle" name="calle" required
+                                       class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                       placeholder="Av. Revolución 123">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="colonia" class="block text-sm font-medium text-slate-700 mb-1">Colonia *</label>
+                                    <input type="text" id="colonia" name="colonia" required
+                                           class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                           placeholder="Juárez">
+                                </div>
+                                <div>
+                                    <label for="ciudad" class="block text-sm font-medium text-slate-700 mb-1">Ciudad *</label>
+                                    <input type="text" id="ciudad" name="ciudad" required
+                                           class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                           placeholder="Ciudad de México">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="estado" class="block text-sm font-medium text-slate-700 mb-1">Estado *</label>
+                                    <select id="estado" name="estado" required
+                                            class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue">
+                                        <option value="">Selecciona un estado</option>
+                                        <option value="AGS">Aguascalientes</option>
+                                        <option value="BC">Baja California</option>
+                                        <option value="BCS">Baja California Sur</option>
+                                        <option value="CAMP">Campeche</option>
+                                        <option value="COAH">Coahuila</option>
+                                        <option value="COL">Colima</option>
+                                        <option value="CDMX">Ciudad de México</option>
+                                        <option value="CHIS">Chiapas</option>
+                                        <option value="CHIH">Chihuahua</option>
+                                        <option value="DUR">Durango</option>
+                                        <option value="GTO">Guanajuato</option>
+                                        <option value="GRO">Guerrero</option>
+                                        <option value="HGO">Hidalgo</option>
+                                        <option value="JAL">Jalisco</option>
+                                        <option value="EDOMEX">México</option>
+                                        <option value="MICH">Michoacán</option>
+                                        <option value="MOR">Morelos</option>
+                                        <option value="NAY">Nayarit</option>
+                                        <option value="NL">Nuevo León</option>
+                                        <option value="OAX">Oaxaca</option>
+                                        <option value="PUE">Puebla</option>
+                                        <option value="QRO">Querétaro</option>
+                                        <option value="QR">Quintana Roo</option>
+                                        <option value="SLP">San Luis Potosí</option>
+                                        <option value="SIN">Sinaloa</option>
+                                        <option value="SON">Sonora</option>
+                                        <option value="TAB">Tabasco</option>
+                                        <option value="TAMPS">Tamaulipas</option>
+                                        <option value="TLAX">Tlaxcala</option>
+                                        <option value="VER">Veracruz</option>
+                                        <option value="YUC">Yucatán</option>
+                                        <option value="ZAC">Zacatecas</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="cp" class="block text-sm font-medium text-slate-700 mb-1">Código Postal *</label>
+                                    <input type="text" id="cp" name="cp" required
+                                           class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                           placeholder="01234" pattern="\d{5}" maxlength="5">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="referencias" class="block text-sm font-medium text-slate-700 mb-1">Referencias (opcional)</label>
+                                <input type="text" id="referencias" name="referencias"
+                                       class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                       placeholder="Entre calle X y calle Y, cerca de...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Facturación (opcional) -->
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h2 class="text-xl font-bold text-slate-900 mb-4">Datos fiscales (opcional)</h2>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="necesita_factura" name="necesita_factura"
+                                   class="w-5 h-5 text-brand-blue border-slate-300 rounded focus:ring-brand-blue">
+                            <span class="text-slate-700">¿Necesitas factura?</span>
+                        </label>
+                        <div id="factura_fields" class="mt-4 space-y-4 hidden">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="rfc" class="block text-sm font-medium text-slate-700 mb-1">RFC *</label>
+                                    <input type="text" id="rfc" name="rfc"
+                                           class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                           placeholder="ABCD010101ABC">
+                                </div>
+                                <div>
+                                    <label for="razon_social" class="block text-sm font-medium text-slate-700 mb-1">Razón Social *</label>
+                                    <input type="text" id="razon_social" name="razon_social"
+                                           class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+                                           placeholder="Empresa S.A. de C.V.">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="uso_cfdi" class="block text-sm font-medium text-slate-700 mb-1">Uso de CFDI *</label>
+                                <select id="uso_cfdi" name="uso_cfdi"
+                                        class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue">
+                                    <option value="">Selecciona un uso</option>
+                                    <option value="G01">Adquisición de mercancías</option>
+                                    <option value="G03">Gastos en general</option>
+                                    <option value="I01">Inversión</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Método de pago -->
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h2 class="text-xl font-bold text-slate-900 mb-6">Método de pago</h2>
+                        <div class="space-y-4">
+                            <!-- Transferencia bancaria -->
+                            <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-blue transition-colors">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="metodo_pago" value="transferencia" class="w-5 h-5 text-brand-blue" checked>
+                                    <span class="font-medium text-slate-700">Transferencia bancaria (SPEI)</span>
+                                </label>
+                                <p class="text-sm text-slate-500 mt-2 pl-8">
+                                    Recibirás los datos bancarios por correo después de confirmar tu pedido.
+                                </p>
+                            </div>
+                            <!-- Tarjeta de crédito/débito -->
+                            <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-blue transition-colors">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="metodo_pago" value="tarjeta" class="w-5 h-5 text-brand-blue">
+                                    <span class="font-medium text-slate-700">Tarjeta de crédito/débito</span>
+                                </label>
+                                <p class="text-sm text-slate-500 mt-2 pl-8">
+                                    Pago seguro con Stripe (próximamente).
+                                </p>
+                            </div>
+                            <!-- OXXO -->
+                            <div class="border border-slate-200 rounded-lg p-4 hover:border-brand-blue transition-colors">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="metodo_pago" value="oxxo" class="w-5 h-5 text-brand-blue">
+                                    <span class="font-medium text-slate-700">Pago en OXXO</span>
+                                </label>
+                                <p class="text-sm text-slate-500 mt-2 pl-8">
+                                    Genera una referencia para pagar en cualquier OXXO.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Resumen del carrito (1 columna) -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm sticky top-28">
+                        <h2 class="text-xl font-bold text-slate-900 mb-6">Resumen del pedido</h2>
+
+                        <!-- Productos del carrito -->
+                        <div id="checkout-cart-items" class="space-y-4 max-h-[40vh] overflow-y-auto">
+                            <!-- Los productos se cargarán aquí con JavaScript -->
+                        </div>
+
+                        <!-- Totales -->
+                        <div class="border-t border-slate-200 pt-4 mt-6 space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Subtotal</span>
+                                <span class="font-semibold" id="checkout-subtotal">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-600">Envío</span>
+                                <span class="font-semibold" id="checkout-shipping">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-lg font-bold text-slate-900 pt-2">
+                                <span>Total</span>
+                                <span id="checkout-total">$0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Botón de confirmar pedido -->
+                        <button id="confirm-purchase"
+                                class="w-full bg-brand-blue hover:bg-blue-700 text-white py-3 rounded-lg font-bold mt-6 transition-colors shadow-md shadow-blue-500/30">
+                            Confirmar pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-[#0b1120] text-slate-400 py-8 px-[5%] border-t border-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto text-center text-sm">
+            <p>© 2026 Kratos Tecnología en Movimiento. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="carrito-localStorage.js"></script>
+    <script>
+        // ============================================================
+        //  LÓGICA DEL CHECKOUT
+        // ============================================================
+
+        // Cargar carrito y mostrar productos
+        function loadCheckoutCart() {
+            const cart = JSON.parse(localStorage.getItem('kratosCart') || '[]');
+            const cartItemsContainer = document.getElementById('checkout-cart-items');
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-8 text-slate-500">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <p>Tu carrito está vacío</p>
+                        <a href="tienda-en-línea-2.html" class="text-brand-blue hover:underline mt-2 inline-block">Volver a la tienda</a>
+                    </div>
+                `;
+                document.getElementById('confirm-purchase').disabled = true;
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemTotal = (item.precio || 0) * (item.qty || 1);
+                subtotal += itemTotal;
+
+                cartItemsContainer.innerHTML += `
+                    <div class="flex gap-3 p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="w-16 h-16 bg-white rounded-md flex-shrink-0 p-1 border border-slate-200">
+                            <img src="${item.img || 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><rect width=%2240%22 height=%2240%22 fill=%22%23e2e8f0%22/></svg>'}"
+                                 alt="${item.nombre}" class="w-full h-full object-contain mix-blend-multiply">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-bold text-sm text-slate-900 truncate">${item.nombre}</p>
+                            <p class="text-xs text-slate-500">${item.qty || 1} x $${(item.precio || 0).toFixed(2)}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-bold text-sm text-slate-900">$${itemTotal.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Actualizar totales
+            const subtotalEl = document.getElementById('checkout-subtotal');
+            const totalEl = document.getElementById('checkout-total');
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            totalEl.textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        // Mostrar/ocultar campos de factura
+        document.getElementById('necesita_factura').addEventListener('change', function() {
+            document.getElementById('factura_fields').classList.toggle('hidden', !this.checked);
+        });
+
+        // Confirmar pedido
+        document.getElementById('confirm-purchase').addEventListener('click', function() {
+            // Validar formulario
+            const form = document.querySelector('form') || document.querySelector('main');
+            const requiredInputs = form.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+
+            if (!isValid) {
+                alert('Por favor, completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Guardar datos de envío en localStorage
+            const shippingData = {
+                nombre: document.getElementById('nombre').value,
+                telefono: document.getElementById('telefono').value,
+                email: document.getElementById('email').value,
+                calle: document.getElementById('calle').value,
+                colonia: document.getElementById('colonia').value,
+                ciudad: document.getElementById('ciudad').value,
+                estado: document.getElementById('estado').value,
+                cp: document.getElementById('cp').value,
+                referencias: document.getElementById('referencias').value,
+                necesita_factura: document.getElementById('necesita_factura').checked,
+                rfc: document.getElementById('necesita_factura').checked ? document.getElementById('rfc').value : null,
+                razon_social: document.getElementById('necesita_factura').checked ? document.getElementById('razon_social').value : null,
+                uso_cfdi: document.getElementById('necesita_factura').checked ? document.getElementById('uso_cfdi').value : null,
+                metodo_pago: document.querySelector('input[name="metodo_pago"]:checked').value,
+                fecha: new Date().toISOString()
+            };
+
+            localStorage.setItem('kratosShipping', JSON.stringify(shippingData));
+
+            // Limpiar carrito y redirigir
+            localStorage.removeItem('kratosCart');
+            alert('¡Pedido confirmado! Nos pondremos en contacto contigo para coordinar el pago y el envío.');
+            window.location.href = 'index.html';
+        });
+
+        // Cargar carrito al inicio
+        document.addEventListener('DOMContentLoaded', loadCheckoutCart);
+    </script>
+</body>
+</html>

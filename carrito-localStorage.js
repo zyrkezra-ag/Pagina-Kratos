@@ -73,7 +73,7 @@ function eliminarDelSidebar(nombre) {
 
 function irAlCarrito() {
   // Ajusta esta ruta al nombre exacto de tu archivo del carrito de compras
-  window.location.href = 'carrito.html'; 
+  window.location.href = 'carrito-2.html'; 
 }
 
 function mostrarToast(nombre) {
@@ -218,6 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  function mostrarToast(nombre) {
+  const toast = document.getElementById('toast');
+  if (toast) {
+    toast.textContent = `¡${nombre} añadido al carrito!`;
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 3000);
+  }
+}
 
   actualizarBadge();
   renderSidebar();

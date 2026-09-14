@@ -5,64 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios | Soluciones Hidráulicas Profesionales</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .bg-industrial-blue { background-color: #0077B6; }
-        .text-industrial-blue { color: #0077B6; }
-        .border-industrial-blue { border-color: #0077B6; }
-        .hover-bg-industrial-blue:hover { background-color: #005f91; }
+        .text-brand-blue { color: #0077B6; }
+        .bg-brand-blue { background-color: #0077B6; }
+        .border-brand-blue { border-color: #0077B6; }
+        .hover-bg-brand-blue:hover { background-color: #005f91; }
+        .ring-brand-blue { --tw-ring-color: #0077B6; }
         
-        .nav-scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
+        /* Estilos base para inputs */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background-color: #f8fafc;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            background-color: #ffffff;
+            border-color: #0077B6;
+            box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
         }
     </style>
 </head>
-<body class="bg-white text-slate-900 antialiased">
+<body class="bg-white text-slate-800 antialiased">
 
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100 py-4 px-[5%] flex items-center justify-between transition-all">
-        <a href="index.html" class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-industrial-blue rounded flex items-center justify-center text-white font-bold text-xl">H</div>
-            <span class="font-bold text-xl tracking-tight">Kratos<span class="text-industrial-blue"> Tecnología en Movimiento</span></span>
+        <a href="#" class="flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">K</div>
+            <span class="font-bold text-xl tracking-tight text-slate-900">Kratos <span class="text-brand-blue">Tecnología en Movimiento</span></span>
         </a>
-        
-         <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
+
+ <!-- Categorías -->      
+        <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
             <a href="index.html" class="hover:text-brand-blue transition-colors">Inicio</a>
-            <a href="catalogo.html" class="hover:text-brand-blue transition-colors">Catálogo</a>
+            <!-- a href="catalogo.html" class="hover:text-brand-blue transition-colors">Catálogo</a -->
             <a href="servicios.html" class="text-brand-blue font-semibold">Servicios</a>
             <a href="tienda-en-línea-2.html" class="hover:text-brand-blue transition-colors">Tienda</a>
             <a href="contacto.html" class="hover:text-brand-blue transition-colors">Contacto</a>
         </div>
 
-         <div class="flex items-center gap-6">
-            <button class="relative text-slate-600 hover:text-brand-blue transition-colors">
+        <div class="flex items-center gap-6">
+            <button id="cart-btn" class="relative text-slate-600 hover:text-brand-blue transition-colors" onclick="document.getElementById('cart-sidebar').classList.toggle('translate-x-full')">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                <span class="absolute -top-1.5 -right-2 bg-brand-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+                <span class="cart-badge absolute -top-1.5 -right-2 bg-brand-blue text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
             </button>
         </div>
     </nav>
 
-    <header class="relative h-[80vh] flex items-center overflow-hidden">
+    <header class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-brand-dark">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Ingeniería Hidráulica">
+            <img src="Img Servicios/Planta de tratamiento.jpg" class="w-full h-full object-cover" alt="Ingeniería Hidráulica">
             <div class="absolute inset-0 bg-slate-900/70"></div>
         </div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-[5%] w-full">
             <div class="max-w-2xl">
+                <span class="text-brand-blue font-bold tracking-widest text-sm uppercase mb-3 block">Conoce lo que ofrecemos</span>
                 <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                     Servicios especializados en <span class="text-industrial-blue">soluciones hidráulicas</span>
                 </h1>
                 <p class="text-slate-300 text-lg md:text-xl mb-8 font-light">
-                    Más de 15 años brindando soporte técnico de alto nivel para la industria, proyectos de construcción civil y sistemas residenciales de alta eficiencia.
+                 Más de 15 años brindando soporte técnico de alto nivel para la industria, proyectos de construcción civil y sistemas residenciales de alta eficiencia.
                 </p>
-                <button class="bg-industrial-blue hover-bg-industrial-blue text-white px-8 py-4 rounded-md font-bold transition-all flex items-center gap-2">
-                    Solicitar asesoría
+                <a href="contacto.html" class="inline-flex items-center gap-2 bg-brand-blue hover:bg-blue-800 text-white px-8 py-3.5 rounded-md font-semibold transition-all">
+                    Solicitar Asesoría Técnica
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </button>
+                </a>
             </div>
         </div>
     </header>
@@ -131,7 +143,7 @@
                     </div>
                 </div>
                 <div class="bg-industrial-blue/5 border border-industrial-blue/10 rounded-3xl p-8">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1000&auto=format&fit=crop" class="rounded-2xl shadow-lg" alt="Soporte Técnico">
+                    <img src="Img Servicios/Reparación bomba.jpg" class="rounded-2xl shadow-lg" alt="Soporte Técnico">
                 </div>
             </div>
         </div>
@@ -172,6 +184,57 @@
         </div>
     </section>
 
+<!--Cart sidebar -->  
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full sm:w-96 bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 flex flex-col border-l border-slate-200">
+    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-brand-light">
+        <h2 class="cart-list_h2 font-bold text-lg text-slate-900">Carrito de compras (0)</h2>
+        <button onclick="document.getElementById('cart-sidebar').classList.add('translate-x-full')" class="text-slate-400 hover:text-brand-blue transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="cart-list_items flex-1 overflow-y-auto p-6 space-y-4">
+        </div>
+</div>
+
+<div id="overlay" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[110] hidden transition-opacity"></div>
+
+<div id="modal-pedido" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl z-[120] w-[90%] max-w-2xl hidden overflow-hidden">
+    <div class="p-6 border-b border-slate-100 bg-brand-light flex justify-between items-center">
+        <h3 class="font-bold text-xl text-slate-900">Resumen de tu Pedido</h3>
+        <button id="close-modal" class="text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="pedido-detalle p-6 max-h-[60vh] overflow-y-auto space-y-4">
+        </div>
+    
+    <div class="p-6 border-t border-slate-100 bg-slate-50 flex gap-4">
+        <button onclick="document.getElementById('close-modal').click()" class="flex-1 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 py-3 rounded-lg font-bold transition-colors">Seguir Comprando</button>
+        <button class="flex-1 bg-brand-blue hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition-colors shadow-lg shadow-blue-500/30">Procesar Pago</button>
+    </div>
+</div>
+
+<div id="overlay" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[110] hidden transition-opacity"></div>
+
+<div id="modal-pedido" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl z-[120] w-[90%] max-w-2xl hidden overflow-hidden">
+    <div class="p-6 border-b border-slate-100 bg-brand-light flex justify-between items-center">
+        <h3 class="font-bold text-xl text-slate-900">Resumen de tu Pedido</h3>
+        <button id="close-modal" class="text-slate-400 hover:text-red-500 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    
+    <div class="pedido-detalle p-6 max-h-[60vh] overflow-y-auto space-y-4">
+        </div>
+    
+    <div class="p-6 border-t border-slate-100 bg-slate-50 flex gap-4">
+        <button onclick="document.getElementById('close-modal').click()" class="flex-1 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 py-3 rounded-lg font-bold transition-colors">Seguir Comprando</button>
+        <button class="flex-1 bg-brand-blue hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition-colors shadow-lg shadow-blue-500/30">Procesar Pago</button>
+    </div>
+</div>
+
        <footer class="bg-[#0b1120] text-slate-400 py-16 px-[5%] border-t border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
             <div class="col-span-1 md:col-span-2">
@@ -189,10 +252,10 @@
             <div>
                 <h4 class="text-white font-bold mb-6 tracking-wide text-sm">Secciones</h4>
                 <ul class="space-y-3 text-sm">
-                    <li><a href="#" class="hover:text-white transition-colors">Catálogo</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Tienda en Línea</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                    <!-- <li><a href="catalogo.html" class="hover:text-white transition-colors">Catálogo</a></li> -->
+                    <li><a href="servicios.html" class="hover:text-white transition-colors">Servicios</a></li>
+                    <li><a href="tienda-en-línea-2.html" class="hover:text-white transition-colors">Tienda en Línea</a></li>
+                    <li><a href="contacto.html" class="hover:text-white transition-colors">Contacto</a></li>
                 </ul>
             </div>
             <div>
@@ -224,5 +287,8 @@
             }
         });
     </script>
+<!--Links de funciones -->  
+<script src="Funciones tienda en linea.js"></script>
+<script src="carrito-localStorage.js"></script>
 </body>
 </html>
